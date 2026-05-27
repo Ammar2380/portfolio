@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Ammar Jamali — AI Engineer</title>
+<meta name="description" content="Muhammad Ammar Jamali — AI Engineer & ML Developer. Building end-to-end machine learning systems that ship to production.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sans:'Inter',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:.3s cubic-bezier(.4,0,.2,1);
+  --max:1100px;
+  --pad:clamp(1.5rem,4vw,4rem);
+}
+[data-theme="dark"]{
+  --bg:#050505;--bg2:#0d0d0d;--bg3:#141414;--bg4:#1a1a1a;
+  --text:#efefef;--muted:rgba(239,239,239,.45);--muted2:rgba(239,239,239,.2);
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.16);
+  --card:#0d0d0d;--nav-bg:rgba(5,5,5,.9);
+  --rect-bg:#0d0d0d;--rect-hover:#131313;
+  --accent:#efefef;--accent2:rgba(239,239,239,.06);
+  --cli-bg:#0a0a0e;--cli-green:#4ade80;--cli-purple:#a78bfa;--cli-cyan:#67e8f9;
+  --tag-bg:rgba(255,255,255,.05);--tag-border:rgba(255,255,255,.1);
+  --frame-bg:#0d0d0d;--frame-border:rgba(255,255,255,.1);
+}
+[data-theme="light"]{
+  --bg:#f5f4f0;--bg2:#eceae4;--bg3:#e2dfd8;--bg4:#d8d5ce;
+  --text:#141414;--muted:#555550;--muted2:#999890;
+  --border:rgba(0,0,0,.1);--border2:rgba(0,0,0,.2);
+  --card:#faf9f6;--nav-bg:rgba(245,244,240,.92);
+  --rect-bg:#faf9f6;--rect-hover:#f0efe9;
+  --accent:#141414;--accent2:rgba(0,0,0,.04);
+  --cli-bg:#1a1a26;--cli-green:#4ade80;--cli-purple:#a78bfa;--cli-cyan:#67e8f9;
+  --tag-bg:rgba(0,0,0,.06);--tag-border:rgba(0,0,0,.12);
+  --frame-bg:#eceae4;--frame-border:rgba(0,0,0,.15);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased;transition:background var(--ease),color var(--ease);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(128,128,128,.18)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.9rem var(--pad);gap:1.5rem;border-bottom:1px solid transparent;transition:border-color var(--ease),background var(--ease)}
+nav.scrolled{border-color:var(--border2);background:var(--nav-bg);backdrop-filter:blur(20px)}
+.nav-logo{font-family:var(--serif);font-size:1.05rem;cursor:pointer;flex-shrink:0;transition:opacity .2s}
+.nav-logo:hover{opacity:.5}
+.nav-tabs{display:flex;border:1px solid var(--border2);border-radius:100px;overflow:hidden;flex-shrink:0}
+.nav-tab{padding:.4rem .9rem;font-size:11.5px;color:var(--muted);cursor:pointer;transition:background .2s,color .2s;letter-spacing:.02em;white-space:nowrap}
+.nav-tab:hover{color:var(--text)}
+.nav-tab.active{background:var(--accent2);color:var(--text)}
+.nav-right{display:flex;gap:.6rem;align-items:center;flex-shrink:0}
+.icon-btn{width:32px;height:32px;border-radius:7px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:background .2s,color .2s}
+.icon-btn:hover{background:var(--accent2);color:var(--text)}
+.nav-cta{font-size:11.5px;padding:.4rem .9rem;border:1px solid var(--border2);border-radius:100px;color:var(--muted);transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
+.nav-cta:hover{color:var(--text);border-color:var(--text);background:var(--accent2)}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;animation:pgIn .35s ease}
+.page.active{display:block}
+@keyframes pgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem var(--pad) 5rem;position:relative}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:2.25rem;display:flex;align-items:center;gap:10px;justify-content:center}
+.live-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.25rem,7.5vw,6.5rem);line-height:1.0;letter-spacing:-.025em;margin-bottom:2rem;max-width:820px}
+.hero h1 em{font-style:italic;color:var(--muted)}
+.hero-bio{font-size:15px;color:var(--muted);max-width:440px;line-height:1.8;margin-bottom:3rem;font-weight:300}
+.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.btn-pill{font-size:12px;padding:9px 20px;border:1px solid var(--border2);border-radius:100px;color:var(--text);transition:background .2s,border-color .2s;cursor:pointer;background:transparent;font-family:var(--sans);letter-spacing:.02em}
+.btn-pill:hover{background:var(--accent2);border-color:var(--text)}
+.btn-pill.ghost{color:var(--muted);border-color:transparent}
+.btn-pill.ghost:hover{color:var(--text);background:transparent;border-color:transparent}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fadein{animation:fadeUp .7s ease both}
+.fadein:nth-child(1){animation-delay:.02s}
+.fadein:nth-child(2){animation-delay:.12s}
+.fadein:nth-child(3){animation-delay:.22s}
+.fadein:nth-child(4){animation-delay:.32s}
+
+/* ── LAYOUT ── */
+hr.div{border:none;border-top:1px solid var(--border)}
+.section{max-width:var(--max);margin:0 auto;padding:5rem var(--pad)}
+.section-wide{max-width:1300px;margin:0 auto;padding:5rem var(--pad)}
+.sec-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.18em;text-transform:uppercase;margin-bottom:2.5rem;display:flex;align-items:center;gap:12px}
+.sec-label::after{content:'';width:24px;height:1px;background:var(--border2)}
+.prose{font-size:.975rem;color:var(--muted);line-height:1.95;font-weight:300}
+.prose+.prose{margin-top:1.15rem}
+
+/* ── RECT LISTINGS ── */
+.rect-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.rect-item{display:flex;align-items:flex-start;gap:0;background:var(--rect-bg);border-bottom:1px solid var(--border);transition:background .18s;cursor:default;position:relative;overflow:hidden}
+.rect-item:last-child{border-bottom:none}
+.rect-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+.rect-item:hover{background:var(--rect-hover)}
+.rect-item:hover::before{background:var(--text)}
+.rect-num{font-family:var(--mono);font-size:10px;color:var(--muted2);min-width:52px;padding:1.4rem 0 1.4rem 1.5rem;flex-shrink:0;letter-spacing:.06em}
+.rect-body{flex:1;padding:1.4rem 1.5rem 1.4rem 0}
+.rect-title{font-family:var(--serif);font-size:1.2rem;font-weight:400;letter-spacing:-.01em;margin-bottom:.35rem;color:var(--text)}
+.rect-stack{font-family:var(--mono);font-size:10.5px;color:var(--muted2);margin-bottom:.6rem;line-height:1.5}
+.rect-desc{font-size:12.5px;color:var(--muted);line-height:1.8;max-width:640px}
+.rect-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
+.rect-tag{font-family:var(--mono);font-size:10px;color:var(--muted2);background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:3px;padding:3px 8px;letter-spacing:.04em}
+.rect-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;padding:1.4rem 1.5rem;min-width:140px;gap:.75rem;flex-shrink:0}
+.rect-metrics{display:flex;flex-direction:column;gap:.3rem;align-items:flex-end}
+.rect-metric{font-family:var(--mono);font-size:10.5px;color:var(--muted2);text-align:right;white-space:nowrap}
+.rect-metric b{color:var(--text);font-weight:400}
+.rect-links{display:flex;gap:.8rem}
+.rect-links a{font-family:var(--mono);font-size:10.5px;color:var(--muted2);border-bottom:1px solid var(--border);padding-bottom:1px;transition:color .15s,border-color .15s}
+.rect-links a:hover{color:var(--text);border-color:var(--text)}
+
+/* ── SKILL RECTS ── */
+.skill-rect-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.skill-rect{display:grid;grid-template-columns:160px 1fr;background:var(--rect-bg);border-bottom:1px solid var(--border);transition:background .18s;position:relative;overflow:hidden}
+.skill-rect:last-child{border-bottom:none}
+.skill-rect::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+.skill-rect:hover{background:var(--rect-hover)}
+.skill-rect:hover::before{background:var(--text)}
+.skill-rect-cat{font-family:var(--mono);font-size:10.5px;color:var(--muted2);padding:1.1rem 1.5rem;border-right:1px solid var(--border);letter-spacing:.04em;display:flex;align-items:center}
+.skill-rect-vals{font-size:12.5px;color:var(--muted);padding:1.1rem 1.5rem;line-height:1.7}
+
+/* ── EDU / EXP RECTS ── */
+.edu-rect-list{display:flex;flex-direction:column;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.edu-rect{display:flex;justify-content:space-between;align-items:center;background:var(--rect-bg);border-bottom:1px solid var(--border);padding:1.25rem 1.5rem;gap:2rem;transition:background .18s;position:relative;overflow:hidden}
+.edu-rect:last-child{border-bottom:none}
+.edu-rect::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+.edu-rect:hover{background:var(--rect-hover)}
+.edu-rect:hover::before{background:var(--text)}
+.edu-rect-name{font-size:13.5px;color:var(--text);margin-bottom:2px}
+.edu-rect-sub{font-family:var(--mono);font-size:10.5px;color:var(--muted2)}
+.edu-rect-yr{font-family:var(--mono);font-size:10.5px;color:var(--muted2);white-space:nowrap;flex-shrink:0}
+.exp-rect-list{display:flex;flex-direction:column;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.exp-rect{display:grid;grid-template-columns:160px 1fr;background:var(--rect-bg);border-bottom:1px solid var(--border);transition:background .18s;position:relative;overflow:hidden}
+.exp-rect:last-child{border-bottom:none}
+.exp-rect::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+.exp-rect:hover{background:var(--rect-hover)}
+.exp-rect:hover::before{background:var(--text)}
+.exp-rect-period{font-family:var(--mono);font-size:10.5px;color:var(--muted2);padding:1.5rem;border-right:1px solid var(--border);display:flex;align-items:flex-start;line-height:1.5}
+.exp-rect-body{padding:1.5rem}
+.exp-rect-title{font-size:14px;color:var(--text);margin-bottom:.2rem}
+.exp-rect-org{font-family:var(--mono);font-size:10.5px;color:var(--muted2);margin-bottom:.65rem}
+.exp-rect-desc{font-size:12.5px;color:var(--muted);line-height:1.85}
+
+/* ── CONTACT RECTS ── */
+.ct-rect-list{display:flex;flex-direction:column;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.ct-rect{display:flex;justify-content:space-between;align-items:center;background:var(--rect-bg);border-bottom:1px solid var(--border);padding:1.1rem 1.5rem;transition:background .18s;position:relative;overflow:hidden}
+.ct-rect:last-child{border-bottom:none}
+.ct-rect::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+.ct-rect:hover{background:var(--rect-hover)}
+.ct-rect:hover::before{background:var(--text)}
+.ct-rect-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
+.ct-rect a{font-size:12.5px;color:var(--muted);transition:color .15s}
+.ct-rect a:hover{color:var(--text)}
+
+/* ── ABOUT PAGE ── */
+.about-page-hero{min-height:60vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:8rem var(--pad) 4rem;max-width:1300px;margin:0 auto}
+.about-page-hero h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.5rem,5vw,5rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem;max-width:700px}
+.about-page-hero h2 em{font-style:italic;color:var(--muted)}
+.about-page-hero p{font-size:14px;color:var(--muted);max-width:460px;line-height:1.9}
+.about-chapters{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 4rem}
+.chapter{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--border);padding:2.5rem 0;gap:3rem}
+.chapter:first-child{border-top:1px solid var(--border)}
+.chapter-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.15em;text-transform:uppercase;padding-top:.2rem}
+.chapter-text{font-size:.975rem;color:var(--muted);line-height:2}
+
+/* ── PHOTO FRAME (About) ── */
+.about-photo-section{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 4rem;display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start}
+.photo-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-frame-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;width:100%;height:100%;min-height:320px}
+.photo-frame-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.photo-frame-icon{font-size:2rem;opacity:.2}
+.photo-frame-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
+.photo-frame-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.5}
+.about-bio-text{padding-top:.5rem}
+
+/* ── PERSONAL / LANDSCAPE FRAME ── */
+.landscape-section{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 2rem}
+.landscape-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;max-height:420px}
+.landscape-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.landscape-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;width:100%;height:100%;min-height:200px}
+.landscape-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.landscape-ph-icon{font-size:2.5rem;opacity:.15}
+.landscape-ph-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase}
+.landscape-ph-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.5}
+
+/* ── REELS GRID ── */
+.reels-section{max-width:var(--max);margin:0 auto;padding:2rem var(--pad) 4rem}
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.reel-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
+.reel-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.reel-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;width:100%;height:100%;min-height:180px}
+.reel-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.reel-ph-icon{font-size:1.5rem;opacity:.15}
+.reel-ph-num{font-family:var(--mono);font-size:9px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
+
+/* ── THOUGHTS ── */
+.thoughts-wrap{max-width:880px;margin:0 auto;padding:4rem var(--pad)}
+.thoughts-header{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2.5rem}
+.thought{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.thought:first-of-type{border-top:1px solid var(--border)}
+.thought-date{font-family:var(--mono);font-size:10px;color:var(--muted2);margin-bottom:.65rem}
+.thought-text{font-size:14px;color:var(--muted);line-height:1.95;font-weight:300;max-width:700px}
+
+/* ── PIANO ── */
+.piano-teaser{max-width:var(--max);margin:0 auto;padding:2rem var(--pad);display:flex;align-items:center;gap:1rem;cursor:pointer;font-family:var(--mono);font-size:11px;color:var(--muted2);border-top:1px solid var(--border);transition:color .2s}
+.piano-teaser:hover{color:var(--muted)}
+.piano-teaser-blink{animation:blink .9s step-end infinite}
+.piano-modal{position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:2rem}
+.piano-modal.open{display:flex;animation:fadeO .2s ease}
+@keyframes fadeO{from{opacity:0}to{opacity:1}}
+.piano-box{width:min(700px,calc(100vw - 2rem));background:#0a0a0a;border:1px solid rgba(255,255,255,.12);border-radius:10px;overflow:hidden;font-family:var(--mono)}
+.piano-titlebar{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+.piano-title-dots{display:flex;gap:.4rem}
+.piano-title-dot{width:10px;height:10px;border-radius:50%}
+.piano-title-text{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.08em}
+.piano-close{background:none;border:none;color:rgba(255,255,255,.3);font-size:18px;cursor:pointer;line-height:1;transition:color .15s}
+.piano-close:hover{color:#fff}
+.piano-screen{padding:1.25rem 1.5rem .5rem}
+.piano-display{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.3);margin-bottom:1rem;min-height:1.4em;letter-spacing:.04em}
+.piano-keys{display:flex;position:relative;height:120px;margin-bottom:.5rem;user-select:none}
+.piano-key-w{flex:1;background:#e8e8e0;border:1px solid #555;border-radius:0 0 4px 4px;cursor:pointer;position:relative;z-index:1;transition:background .07s;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px}
+.piano-key-w:active,.piano-key-w.lit{background:#c8c8b8}
+.piano-key-w span{font-family:var(--mono);font-size:8px;color:rgba(0,0,0,.3);letter-spacing:.05em;line-height:1.2;text-align:center}
+.piano-key-b{width:28px;background:#0a0a0a;border:1px solid rgba(255,255,255,.15);border-radius:0 0 3px 3px;position:absolute;height:72px;z-index:2;cursor:pointer;transition:background .07s}
+.piano-key-b:active,.piano-key-b.lit{background:#2a2a2a}
+.piano-info{font-size:10.5px;color:rgba(255,255,255,.2);text-align:center;padding:.75rem 1.5rem 1.25rem;line-height:1.6}
+.piano-info kbd{font-family:var(--mono);font-size:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:3px;padding:1px 5px}
+
+/* ── CHAT FLOAT BUTTON (from reference) ── */
+.chat-float{
+  position:fixed;bottom:2rem;right:2rem;z-index:300;
+  background:rgba(10,10,10,.85);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);
+  padding:.6rem 1.4rem;border-radius:100px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.5);
+  transition:all .3s ease;
+}
+.chat-float:hover{border-color:rgba(255,255,255,.18);transform:translateY(-2px)}
+.chat-float-dot{width:6px;height:6px;background:#34d399;border-radius:50%;box-shadow:0 0 8px rgba(52,211,153,.5)}
+.chat-float-label{font-family:var(--mono);font-size:11.5px;color:var(--text)}
+
+/* ── CLI OVERLAY (exact from reference) ── */
+.agent-overlay{
+  position:fixed;inset:0;background:rgba(3,3,3,.88);backdrop-filter:blur(10px);
+  z-index:600;display:none;align-items:center;justify-content:center;padding:2rem;
+  opacity:0;transition:opacity .3s ease;
+}
+.agent-overlay.open{display:flex;opacity:1}
+
+.agent-panel{
+  width:100%;max-width:600px;height:500px;
+  background:#070708;
+  border:1px solid rgba(255,255,255,.06);border-radius:12px;
+  display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.9);
+  transform:translateY(20px);transition:transform .4s cubic-bezier(0.25,1,0.5,1);
+}
+.agent-overlay.open .agent-panel{transform:translateY(0)}
+
+/* topbar */
+.cli-topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.8rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.03);
+  background:rgba(0,0,0,.3);flex-shrink:0;
+}
+.cli-dots{display:flex;gap:6px}
+.cli-dot{width:10px;height:10px;border-radius:50%}
+.cli-dot.close{background:#ff5f56;cursor:pointer}
+.cli-dot.min{background:#ffbd2e}
+.cli-dot.max{background:#27c93f}
+.cli-title-text{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.05em}
+
+/* body */
+.cli-body{
+  flex-grow:1;padding:1.5rem;overflow-y:auto;
+  font-family:var(--mono);font-size:12.5px;line-height:1.6;
+  display:flex;flex-direction:column;gap:.8rem;
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent;
+}
+.cli-body::-webkit-scrollbar{width:3px}
+.cli-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
+
+.cli-line.system{color:rgba(255,255,255,.3);font-size:11px}
+.cli-line.prompt{color:rgba(255,255,255,.9)}
+.cli-line.prompt::before{content:'~/ammar $ ';color:rgba(255,255,255,.3)}
+.cli-line.response{color:#e1e1e6;padding-left:.5rem;border-left:1px solid rgba(255,255,255,.04)}
+
+/* chips */
+.cli-chips{
+  display:flex;flex-wrap:wrap;gap:.5rem;
+  padding:.5rem 1.5rem;border-top:1px solid rgba(255,255,255,.025);
+  flex-shrink:0;
+}
+.cli-chip{
+  font-family:var(--mono);font-size:10.5px;padding:5px 12px;
+  border:1px solid rgba(255,255,255,.05);border-radius:100px;
+  color:rgba(255,255,255,.45);cursor:pointer;background:transparent;
+  transition:color .2s,border-color .2s,background .2s;
+}
+.cli-chip:hover{color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.02)}
+
+/* input row */
+.cli-input-row{
+  display:flex;align-items:center;padding:1rem 1.5rem;
+  border-top:1px solid rgba(255,255,255,.03);
+  background:rgba(0,0,0,.2);flex-shrink:0;
+}
+.cli-input-label{font-family:var(--mono);color:rgba(255,255,255,.3);font-size:12.5px;margin-right:8px;flex-shrink:0}
+.cli-input{
+  flex-grow:1;background:transparent;border:none;outline:none;
+  font-family:var(--mono);font-size:12.5px;color:#34d399;caret-color:#34d399;
+}
+.cli-input::placeholder{color:rgba(255,255,255,.18)}
+
+/* ── MUSIC BAR ── */
+.music-bar{position:fixed;bottom:2rem;left:2rem;z-index:300;display:flex;align-items:center;gap:.5rem;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:.5rem .85rem;font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;transition:background .2s}
+.music-bar:hover{background:var(--bg3);color:var(--text)}
+.music-waves{display:flex;gap:2px;align-items:center;height:12px}
+.music-wave{width:2px;border-radius:1px;background:currentColor;animation:wave 1s ease infinite}
+.music-wave:nth-child(1){height:4px;animation-delay:0s}
+.music-wave:nth-child(2){height:9px;animation-delay:.1s}
+.music-wave:nth-child(3){height:12px;animation-delay:.2s}
+.music-wave:nth-child(4){height:7px;animation-delay:.3s}
+.music-wave:nth-child(5){height:4px;animation-delay:.4s}
+@keyframes wave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+.music-waves.paused .music-wave{animation-play-state:paused}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:1.5rem var(--pad);display:flex;justify-content:space-between;align-items:center}
+footer p{font-family:var(--mono);font-size:10.5px;color:var(--muted2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .chapter{grid-template-columns:140px 1fr;gap:2rem}
+  .skill-rect{grid-template-columns:130px 1fr}
+  .exp-rect{grid-template-columns:120px 1fr}
+  .rect-right{min-width:120px}
+  .about-photo-section{grid-template-columns:220px 1fr;gap:2.5rem}
+}
+@media(max-width:768px){
+  nav{padding:.8rem 1.25rem}
+  .nav-tab{padding:.35rem .65rem;font-size:11px}
+  .nav-cta{display:none}
+  .section,.section-wide{padding:3.5rem 1.25rem}
+  .chapter{grid-template-columns:1fr;gap:.75rem}
+  .skill-rect{grid-template-columns:1fr}
+  .skill-rect-cat{border-right:none;border-bottom:1px solid var(--border);padding:.75rem 1.25rem}
+  .skill-rect-vals{padding:.75rem 1.25rem}
+  .exp-rect{grid-template-columns:1fr}
+  .exp-rect-period{border-right:none;border-bottom:1px solid var(--border);padding:1rem 1.25rem}
+  .exp-rect-body{padding:1rem 1.25rem}
+  .rect-item{flex-wrap:wrap}
+  .rect-right{min-width:unset;width:100%;flex-direction:row;justify-content:space-between;padding:0 1.5rem 1.25rem}
+  .rect-num{padding:1.25rem 0 0 1.25rem;min-width:40px}
+  .rect-body{padding:1.25rem 1.25rem .75rem 0}
+  footer{padding:1.25rem;flex-direction:column;gap:.4rem;text-align:center}
+  .thoughts-wrap{padding:3rem 1.25rem}
+  .agent-overlay{padding:.75rem}
+  .about-photo-section{grid-template-columns:1fr;padding:0 1.25rem 3rem}
+  .landscape-section,.reels-section{padding:0 1.25rem 2.5rem}
+  .reels-grid{grid-template-columns:repeat(2,1fr)}
+  .music-bar{left:1rem;bottom:1rem}
+  .chat-float{bottom:1rem;right:1rem}
+  .piano-keys{height:100px}
+  .piano-key-b{height:60px}
+}
+@media(max-width:480px){
+  .nav-tabs .nav-tab{padding:.3rem .5rem;font-size:10.5px}
+  .rect-right{flex-direction:column;gap:.5rem;align-items:flex-start}
+  .reels-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="nav-logo" onclick="goHome()">Muhammad Ammar <em style="font-style:italic;color:var(--muted)">Jamali</em></span>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="switchPage('ai')" id="tab-ai">AI Engineer</div>
+    <div class="nav-tab" onclick="switchPage('web')" id="tab-web">Web Dev</div>
+    <div class="nav-tab" onclick="switchPage('exp')" id="tab-exp">Experience</div>
+    <div class="nav-tab" onclick="switchPage('about')" id="tab-about">About</div>
+    <div class="nav-tab" onclick="switchPage('personal')" id="tab-personal">Personal</div>
+  </div>
+  <div class="nav-right">
+    <button class="icon-btn" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">◐</button>
+    <a href="mailto:ammarjamali2006@gmail.com" class="nav-cta">Email me</a>
+  </div>
+</nav>
+
+<div class="music-bar" onclick="toggleMusic()">
+  <span>♪</span>
+  <span id="musicLabel">Ambient</span>
+  <div class="music-waves paused" id="musicWaves">
+    <div class="music-wave"></div><div class="music-wave"></div>
+    <div class="music-wave"></div><div class="music-wave"></div>
+    <div class="music-wave"></div>
+  </div>
+</div>
+
+<div class="chat-float" onclick="openAgent()">
+  <div class="chat-float-dot"></div>
+  <span class="chat-float-label">ammar.ai ~</span>
+</div>
+
+<!-- ═══════ AI PAGE ═══════ -->
+<div class="page active" id="page-ai">
+  <div class="hero">
+    <p class="hero-eyebrow fadein"><span class="live-dot"></span>Available for AI roles · Remote &amp; Worldwide</p>
+    <h1 class="fadein">Building ML systems<br><em>that actually ship.</em></h1>
+    <p class="hero-bio fadein">3rd-year Data Science student. End-to-end ML, deep learning &amp; NLP — fine-tuned transformers, CNNs, live Hugging Face demos. Ask my agent anything.</p>
+    <div class="hero-actions fadein">
+      <button class="btn-pill" onclick="openAgent()">Ask ammar.ai ✦</button>
+      <a href="mailto:ammarjamali2006@gmail.com" class="btn-pill ghost">ammarjamali2006@gmail.com</a>
+      <a href="https://github.com/Ammar2380" target="_blank" class="btn-pill ghost">GitHub ↗</a>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">About</div>
+    <p class="prose">I'm Muhammad Ammar Jamali — an AI engineer and Data Science student with hands-on experience designing and deploying machine learning systems. My work spans NLP, computer vision, and predictive modeling, always with a bias toward shipping things that run in production.</p>
+    <p class="prose" style="margin-top:1.1rem">Currently deepening skills through SMIT's Deep Learning program and PITP's Data Science program, alongside a B.S. in Data Science at University of Sindh. Fast learner. Strong problem-solver. Eager to build AI that actually matters.</p>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Skills</div>
+    <div class="skill-rect-list">
+      <div class="skill-rect"><div class="skill-rect-cat">Languages</div><div class="skill-rect-vals">Python · SQL · HTML / CSS</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Frameworks</div><div class="skill-rect-vals">TensorFlow · Keras · PyTorch · scikit-learn · Hugging Face Transformers</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Deep Learning</div><div class="skill-rect-vals">ANN · CNN · Transfer Learning · DistilBERT Fine-tuning · NLP · Computer Vision</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Data</div><div class="skill-rect-vals">Pandas · NumPy · Matplotlib · Seaborn · EDA · Feature Engineering</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Deployment</div><div class="skill-rect-vals">Flask · Gradio · Streamlit · Hugging Face Spaces · OpenCV · Git &amp; GitHub</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Concepts</div><div class="skill-rect-vals">Supervised / Unsupervised · Classification · Regression · Hyperparameter Tuning · Regularization</div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Projects</div>
+    <div class="rect-list">
+      <div class="rect-item"><div class="rect-num">01</div><div class="rect-body"><div class="rect-title">SpamScan</div><div class="rect-stack">DistilBERT · PyTorch · Hugging Face Transformers</div><div class="rect-desc">Fine-tuned DistilBERT on 5,500+ SMS/email messages for binary spam classification. Full pipeline — tokenization, data collation, evaluation metrics. Deployed on Hugging Face Spaces with real-time inference.</div><div class="rect-tags"><span class="rect-tag">NLP</span><span class="rect-tag">Transformers</span><span class="rect-tag">Deployment</span></div></div><div class="rect-right"><div class="rect-metrics"><div class="rect-metric"><b>97%</b> F1-score</div><div class="rect-metric"><b>−40%</b> latency vs baseline</div><div class="rect-metric"><b>100+</b> live predictions</div></div><div class="rect-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a><a href="https://huggingface.co" target="_blank">Demo ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">02</div><div class="rect-body"><div class="rect-title">Face Recognition CNN — Dataset Builder</div><div class="rect-stack">Flask · OpenCV · Python</div><div class="rect-desc">Flask + OpenCV pipeline to capture, label, and organize face datasets of 200–500 images per person. Auto 80/20 train-test split with diversity enforcement.</div><div class="rect-tags"><span class="rect-tag">Computer Vision</span><span class="rect-tag">Flask</span><span class="rect-tag">OpenCV</span></div></div><div class="rect-right"><div class="rect-metrics"><div class="rect-metric"><b>−60%</b> data prep time</div><div class="rect-metric"><b>200–500</b> imgs/person</div></div><div class="rect-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">03</div><div class="rect-body"><div class="rect-title">CIFAR-10 Image Classification</div><div class="rect-stack">TensorFlow · Keras · CNN</div><div class="rect-desc">Custom CNN from scratch on 60,000 images across 10 classes. Conv2D + MaxPooling → Dense with Dropout (0.5). Trained 30 epochs, validation loss converged in 15.</div><div class="rect-tags"><span class="rect-tag">CNN</span><span class="rect-tag">TensorFlow</span><span class="rect-tag">Image Classification</span></div></div><div class="rect-right"><div class="rect-metrics"><div class="rect-metric"><b>87%</b> test accuracy</div><div class="rect-metric"><b>+22%</b> over baseline</div></div><div class="rect-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">04</div><div class="rect-body"><div class="rect-title">Diabetes Progression Prediction</div><div class="rect-stack">TensorFlow · Keras · ANN · Regression</div><div class="rect-desc">4-layer fully-connected ANN. StandardScaler normalization, Dropout (0.1), EarlyStopping (patience=20). Inverse-scaled predictions for interpretable output.</div><div class="rect-tags"><span class="rect-tag">ANN</span><span class="rect-tag">Regression</span><span class="rect-tag">Healthcare</span></div></div><div class="rect-right"><div class="rect-metrics"><div class="rect-metric"><b>MSE 2,900</b></div><div class="rect-metric"><b>35%</b> faster convergence</div></div><div class="rect-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">05</div><div class="rect-body"><div class="rect-title">Heart Disease Prediction</div><div class="rect-stack">scikit-learn · Logistic Regression · SVM · Random Forest</div><div class="rect-desc">Benchmarked 3 models on 303 clinical records. Feature engineering with correlation analysis to select top 10 predictive features.</div><div class="rect-tags"><span class="rect-tag">Classification</span><span class="rect-tag">ML</span><span class="rect-tag">Healthcare</span></div></div><div class="rect-right"><div class="rect-metrics"><div class="rect-metric"><b>88%</b> F1-score</div><div class="rect-metric"><b>3</b> models benchmarked</div></div><div class="rect-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">06</div><div class="rect-body"><div class="rect-title">Pakistan Real Estate EDA</div><div class="rect-stack">Pandas · Seaborn · Matplotlib</div><div class="rect-desc">Exploratory analysis of 10,000+ property listings across 5 major Pakistani cities. Surfaced 3 key pricing trends with dashboards.</div><div class="rect-tags"><span class="rect-tag">EDA</span><span class="rect-tag">Visualization</span></div></div><div class="rect-right"><div class="rect-metrics"><div class="rect-metric"><b>10k+</b> listings</div><div class="rect-metric"><b>5</b> cities</div></div><div class="rect-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">07</div><div class="rect-body"><div class="rect-title">Supermarket Sales EDA Dashboard</div><div class="rect-stack">Pandas · Seaborn · KPI Dashboards</div><div class="rect-desc">Sales analysis of 1,000 transactions across 3 branches. Identified top product line generating 34% of total revenue via KPI dashboards.</div><div class="rect-tags"><span class="rect-tag">EDA</span><span class="rect-tag">KPI</span></div></div><div class="rect-right"><div class="rect-metrics"><div class="rect-metric"><b>34%</b> revenue insight</div></div><div class="rect-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div></div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Education</div>
+    <div class="edu-rect-list">
+      <div class="edu-rect"><div><div class="edu-rect-name">B.S. in Data Science</div><div class="edu-rect-sub">University of Sindh, Jamshoro</div></div><div class="edu-rect-yr">2024 – 2027</div></div>
+      <div class="edu-rect"><div><div class="edu-rect-name">Deep Learning Program</div><div class="edu-rect-sub">SMIT — Saylani Mass IT Training, Hyderabad</div></div><div class="edu-rect-yr">Current</div></div>
+      <div class="edu-rect"><div><div class="edu-rect-name">Data Science Program</div><div class="edu-rect-sub">PITP — Government of Sindh Initiative</div></div><div class="edu-rect-yr">Current</div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="ct-rect-list">
+      <div class="ct-rect"><span class="ct-rect-label">Email</span><a href="mailto:ammarjamali2006@gmail.com">ammarjamali2006@gmail.com</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">Phone</span><a href="tel:+923123980106">+92 312 3980106</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">GitHub</span><a href="https://github.com/Ammar2380" target="_blank">github.com/Ammar2380</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">Hugging Face</span><a href="https://huggingface.co" target="_blank">Live ML Demos ↗</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">LinkedIn</span><a href="#" target="_blank">Add your LinkedIn ↗</a></div>
+    </div>
+  </div>
+  <footer><p>Muhammad Ammar · Jamali · AI Engineer</p><p>© 2025</p></footer>
+</div>
+
+<!-- ═══════ WEB PAGE ═══════ -->
+<div class="page" id="page-web">
+  <div class="hero" style="padding-bottom:4rem">
+    <p class="hero-eyebrow fadein"><span class="live-dot"></span>Frontend · React.js · MERN Stack</p>
+    <h1 class="fadein">Building the web,<br><em>one interface at a time.</em></h1>
+    <p class="hero-bio fadein">React.js developer with real-world client work — agency sites, product pages, AI SaaS, and portfolio builds. Responsive, modern, component-driven.</p>
+    <div class="hero-actions fadein">
+      <a href="mailto:ammar211132@gmail.com" class="btn-pill">Get in touch ↗</a>
+      <a href="https://github.com/Ammar2380" target="_blank" class="btn-pill ghost">GitHub ↗</a>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Stack</div>
+    <div class="skill-rect-list">
+      <div class="skill-rect"><div class="skill-rect-cat">Frontend</div><div class="skill-rect-vals">React.js · JavaScript (ES6+) · HTML5 · CSS3</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Design</div><div class="skill-rect-vals">Responsive &amp; Mobile-First · Component-Based Architecture · UI/UX</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Tools</div><div class="skill-rect-vals">Git &amp; GitHub · Vercel · VS Code</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Data</div><div class="skill-rect-vals">Python · Pandas · NumPy · Seaborn · Matplotlib</div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Client Work</div>
+    <div class="rect-list">
+      <div class="rect-item"><div class="rect-num">01</div><div class="rect-body"><div class="rect-title">Team Uraan</div><div class="rect-stack">Creative Agency · Client Work · HayViral</div><div class="rect-desc">Full website for a creative agency. Modern layout, service sections, mobile-first responsive design built in React.</div><div class="rect-tags"><span class="rect-tag">React.js</span><span class="rect-tag">Responsive</span><span class="rect-tag">Agency</span></div></div><div class="rect-right"><div class="rect-links"><a href="#" target="_blank">View Site ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">02</div><div class="rect-body"><div class="rect-title">Himala Hills — Shilajit</div><div class="rect-stack">Product · E-commerce · HayViral</div><div class="rect-desc">Product landing page for a premium Shilajit brand. Conversion-focused layout with mobile-first design.</div><div class="rect-tags"><span class="rect-tag">React.js</span><span class="rect-tag">Mobile-First</span><span class="rect-tag">E-commerce</span></div></div><div class="rect-right"><div class="rect-links"><a href="#" target="_blank">View Site ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">03</div><div class="rect-body"><div class="rect-title">HayViral AI SaaS</div><div class="rect-stack">SaaS · AI Company Website</div><div class="rect-desc">Company website for an AI SaaS platform. Clean UI with animated sections and clear product messaging.</div><div class="rect-tags"><span class="rect-tag">React.js</span><span class="rect-tag">SaaS</span><span class="rect-tag">AI</span></div></div><div class="rect-right"><div class="rect-links"><a href="#" target="_blank">View Site ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">04</div><div class="rect-body"><div class="rect-title">Jawad Ahmed — Portfolio</div><div class="rect-stack">Portfolio · Personal · Freelance</div><div class="rect-desc">Personal portfolio website for a client. Custom design, smooth transitions, fully responsive layout.</div><div class="rect-tags"><span class="rect-tag">React.js</span><span class="rect-tag">Portfolio</span></div></div><div class="rect-right"><div class="rect-links"><a href="#" target="_blank">View Site ↗</a></div></div></div>
+      <div class="rect-item"><div class="rect-num">05</div><div class="rect-body"><div class="rect-title">Habitanova</div><div class="rect-stack">Hackathon Project</div><div class="rect-desc">Habit-tracking application built under pressure at a hackathon. React, component architecture, clean UX.</div><div class="rect-tags"><span class="rect-tag">React.js</span><span class="rect-tag">Hackathon</span></div></div><div class="rect-right"><div class="rect-links"><a href="#" target="_blank">View Site ↗</a></div></div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="ct-rect-list">
+      <div class="ct-rect"><span class="ct-rect-label">Email</span><a href="mailto:ammar211132@gmail.com">ammar211132@gmail.com</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">GitHub</span><a href="https://github.com/Ammar2380" target="_blank">github.com/Ammar2380</a></div>
+    </div>
+  </div>
+  <footer><p>Muhammad Ammar · Jamali · Web Dev</p><p>© 2025</p></footer>
+</div>
+
+<!-- ═══════ EXPERIENCE PAGE ═══════ -->
+<div class="page" id="page-exp">
+  <div style="padding-top:6rem"></div>
+  <div class="section">
+    <div class="sec-label">Work Experience</div>
+    <div class="exp-rect-list">
+      <div class="exp-rect"><div class="exp-rect-period">2025 – Jan 2026</div><div class="exp-rect-body"><div class="exp-rect-title">Frontend Developer</div><div class="exp-rect-org">HayViral — AI SaaS Company</div><p class="exp-rect-desc">Built and maintained production React.js web applications for the company and its clients. Delivered responsive, mobile-first UI for an AI SaaS platform, a creative agency website, and a product e-commerce page. Worked directly with clients to translate design briefs into polished, functional interfaces deployed on Vercel.</p></div></div>
+      <div class="exp-rect"><div class="exp-rect-period">Freelance</div><div class="exp-rect-body"><div class="exp-rect-title">Frontend Developer — Personal Clients</div><div class="exp-rect-org">Independent</div><p class="exp-rect-desc">Designed and built portfolio websites and personal web projects. Projects include Jawad Ahmed's portfolio and the Habitanova hackathon application.</p></div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Education &amp; Training</div>
+    <div class="edu-rect-list">
+      <div class="edu-rect"><div><div class="edu-rect-name">B.S. in Data Science</div><div class="edu-rect-sub">University of Sindh, Jamshoro</div></div><div class="edu-rect-yr">2024 – 2027</div></div>
+      <div class="edu-rect"><div><div class="edu-rect-name">Deep Learning Program</div><div class="edu-rect-sub">SMIT — Saylani Mass IT Training, Hyderabad</div></div><div class="edu-rect-yr">Current</div></div>
+      <div class="edu-rect"><div><div class="edu-rect-name">Data Science Program</div><div class="edu-rect-sub">PITP — Government of Sindh Initiative</div></div><div class="edu-rect-yr">Current</div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="ct-rect-list">
+      <div class="ct-rect"><span class="ct-rect-label">Email</span><a href="mailto:ammarjamali2006@gmail.com">ammarjamali2006@gmail.com</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">GitHub</span><a href="https://github.com/Ammar2380" target="_blank">github.com/Ammar2380</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">LinkedIn</span><a href="#" target="_blank">Add your LinkedIn ↗</a></div>
+    </div>
+  </div>
+  <footer><p>Muhammad Ammar · Jamali · Experience</p><p>© 2025</p></footer>
+</div>
+
+<!-- ═══════ ABOUT PAGE ═══════ -->
+<div class="page" id="page-about">
+  <div class="about-page-hero">
+    <p class="hero-eyebrow" style="margin-bottom:1.5rem"><span class="live-dot"></span>Muhammad Ammar · Jamali · Pakistan</p>
+    <h2>The person<br>behind the <em>models.</em></h2>
+    <p style="margin-top:1rem">An AI engineer who builds machines that learn and ships code that runs. Based in Pakistan, open to the world.</p>
+  </div>
+  <hr class="div">
+
+  <!-- Photo + Bio side by side -->
+  <div class="about-photo-section">
+    <div class="photo-frame" id="photoFrame" onclick="document.getElementById('photoInput').click()">
+      <img id="photoImg" src="" alt="" style="display:none">
+      <div class="photo-frame-placeholder" id="photoPlaceholder">
+        <input type="file" id="photoInput" accept="image/*" onchange="loadPhoto(event)" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
+        <div class="photo-frame-icon">◻</div>
+        <div class="photo-frame-label">Your Photo</div>
+        <div class="photo-frame-sub">click to upload</div>
+      </div>
+    </div>
+    <div class="about-bio-text">
+      <div class="sec-label" style="margin-bottom:1.5rem">Origin</div>
+      <p class="prose">I grew up in Pakistan — a place that taught me to be resourceful, fast, and never wait for perfect conditions. In a Jamali household, ambition was expected and family was constant. Both shaped how I work: with urgency, with loyalty, and with a strong sense that things should actually get done.</p>
+      <p class="prose" style="margin-top:1.25rem">My first real encounter with computers wasn't about games — it was about the feeling that the screen was a window into a different kind of thinking. By the time I was in secondary school, I knew I wanted to build things, not just use them.</p>
+    </div>
+  </div>
+
+  <div class="about-chapters">
+    <div class="chapter">
+      <div class="chapter-label">the turn</div>
+      <p class="chapter-text">The moment I discovered machine learning, something clicked. The idea that you could show a model enough examples and it would learn the pattern on its own — that felt like real magic. I enrolled in Data Science at University of Sindh in 2024, joined SMIT's Deep Learning program and PITP's Data Science program simultaneously, and just started building. SpamScan was my first serious model. 97% F1. Live on Hugging Face. That was the proof of concept that changed everything.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-label">the work</div>
+      <p class="chapter-text">I've built CNNs, fine-tuned transformer models, done EDA on tens of thousands of data points, and shipped multiple React.js web applications for real clients at HayViral. Every project taught me something the lecture notes didn't. I care more about what ships than what looks impressive on paper.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-label">now</div>
+      <p class="chapter-text">I'm actively building in public, studying full-time across three programs simultaneously, and genuinely excited about where all of this goes. I want to work on AI systems that matter — not demos, not toys, but things that change how someone does their job or lives their day. Available for AI Engineer roles, remote or on-site, worldwide. If you've read this far, reach out.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="ct-rect-list">
+      <div class="ct-rect"><span class="ct-rect-label">Email</span><a href="mailto:ammarjamali2006@gmail.com">ammarjamali2006@gmail.com</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">GitHub</span><a href="https://github.com/Ammar2380" target="_blank">github.com/Ammar2380</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">LinkedIn</span><a href="#" target="_blank">Add your LinkedIn ↗</a></div>
+    </div>
+  </div>
+  <footer><p>Muhammad Ammar · Jamali</p><p>© 2025</p></footer>
+</div>
+
+<!-- ═══════ PERSONAL PAGE ═══════ -->
+<div class="page" id="page-personal">
+  <div class="hero" style="min-height:55vh">
+    <h2 class="fadein" style="font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:400;margin-bottom:1.5rem;line-height:1.05;letter-spacing:-.02em">this is the<br><em style="color:var(--muted)">unfiltered version.</em></h2>
+    <p class="fadein" style="font-size:14px;color:var(--muted);max-width:380px;line-height:1.8">frames, thoughts, things I'm building. updated whenever.</p>
+  </div>
+
+  <hr class="div">
+
+  <!-- Landscape frame -->
+  <div class="section-wide" style="padding-bottom:1rem">
+    <div class="sec-label">Landscape</div>
+  </div>
+  <div class="landscape-section">
+    <div class="landscape-frame" id="landscapeFrame" onclick="document.getElementById('landscapeInput').click()">
+      <img id="landscapeImg" src="" alt="" style="display:none">
+      <div class="landscape-placeholder" id="landscapePlaceholder">
+        <input type="file" id="landscapeInput" accept="image/*" onchange="loadLandscape(event)" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
+        <div class="landscape-ph-icon">⬚</div>
+        <div class="landscape-ph-label">Upload your landscape</div>
+        <div class="landscape-ph-sub">click to upload · 16 : 9</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div" style="margin-top:2rem">
+
+  <!-- Reels -->
+  <div class="section-wide" style="padding-bottom:1rem;padding-top:4rem">
+    <div class="sec-label">Cinematic Reels</div>
+  </div>
+  <div class="reels-section">
+    <div class="reels-grid" id="reelsGrid">
+      <!-- 6 reel frames generated by JS -->
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Piano easter egg -->
+  <div class="piano-teaser" onclick="openPiano()">
+    <span style="font-size:16px;opacity:.5">♩</span>
+    <span>$ play piano.sh <span class="piano-teaser-blink">_</span></span>
+    <span style="margin-left:auto;font-size:10px;opacity:.5">hidden instrument</span>
+  </div>
+
+  <hr class="div">
+
+  <!-- Thoughts -->
+  <div class="thoughts-wrap">
+    <div class="thoughts-header">Current thoughts</div>
+    <div class="thought"><div class="thought-date">may 2026</div><p class="thought-text">building in public is scary but worth it. every project ships something — the code, or a lesson. both count.</p></div>
+    <div class="thought"><div class="thought-date">may 2026</div><p class="thought-text">i want to build AI things that feel like magic to the people using them but are boring engineering underneath. that gap — between perceived magic and mechanical reality — is where the craft lives.</p></div>
+    <div class="thought"><div class="thought-date">apr 2026</div><p class="thought-text">started noticing that the best ML models aren't the ones with the fanciest architecture. they're the ones where someone cared enough about the data.</p></div>
+    <div class="thought"><div class="thought-date">apr 2026</div><p class="thought-text">three programs simultaneously — university, SMIT, PITP. people ask how. the answer is: i don't think about it too much. i just open the next notebook.</p></div>
+  </div>
+
+  <footer><p>Muhammad Ammar · Jamali</p><p>© 2025</p></footer>
+</div>
+
+<!-- ═══════ AGENT CLI (exact from reference) ═══════ -->
+<div class="agent-overlay" id="agentOverlay" onclick="if(event.target===this) closeAgent()">
+  <div class="agent-panel" id="agentPanel">
+    <div class="cli-topbar">
+      <div class="cli-dots">
+        <div class="cli-dot close" onclick="closeAgent()"></div>
+        <div class="cli-dot min"></div>
+        <div class="cli-dot max"></div>
+      </div>
+      <div class="cli-title-text">ammar.ai — Autonomous Interface</div>
+      <div></div>
+    </div>
+    <div class="cli-body" id="cliBody"></div>
+    <div class="cli-chips" id="chips">
+      <button class="cli-chip" onclick="cliAsk('List AI systems built')">Core ML Systems</button>
+      <button class="cli-chip" onclick="cliAsk('SpamScan metrics')">SpamScan Details</button>
+      <button class="cli-chip" onclick="cliAsk('Availability status')">Availability</button>
+      <button class="cli-chip" onclick="cliAsk('best ML result?')">Best Result</button>
+    </div>
+    <div class="cli-input-row">
+      <span class="cli-input-label">~/ammar $</span>
+      <input type="text" class="cli-input" id="cliInput" placeholder="Enter inquiry parameter..." onkeydown="if(event.key==='Enter') sendCli()">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ PIANO MODAL ═══════ -->
+<div class="piano-modal" id="pianoModal" onclick="closePianoOutside(event)">
+  <div class="piano-box">
+    <div class="piano-titlebar">
+      <div class="piano-title-dots"><div class="piano-title-dot" style="background:#ff5f56"></div><div class="piano-title-dot" style="background:#ffbd2e"></div><div class="piano-title-dot" style="background:#27c93f"></div></div>
+      <div class="piano-title-text">piano.sh — play something</div>
+      <button class="piano-close" onclick="closePiano()">×</button>
+    </div>
+    <div class="piano-screen">
+      <div class="piano-display" id="pianoDisplay">— click a key or use keyboard —</div>
+      <div class="piano-keys" id="pianoKeys"></div>
+    </div>
+    <div class="piano-info">
+      <kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>F</kbd><kbd>G</kbd><kbd>H</kbd><kbd>J</kbd><kbd>K</kbd> white keys &nbsp;·&nbsp; <kbd>W</kbd><kbd>E</kbd><kbd>T</kbd><kbd>Y</kbd><kbd>U</kbd> black keys
+    </div>
+  </div>
+</div>
+
+<script>
+// ── THEME ──
+function toggleTheme(){
+  const h=document.documentElement
+  const t=h.getAttribute('data-theme')==='dark'?'light':'dark'
+  h.setAttribute('data-theme',t)
+  document.getElementById('themeToggle').textContent=t==='dark'?'◐':'◑'
+}
+
+// ── PAGES ──
+function switchPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'))
+  document.getElementById('page-'+id).classList.add('active')
+  document.getElementById('tab-'+id).classList.add('active')
+  window.scrollTo({top:0,behavior:'smooth'})
+}
+function goHome(){switchPage('ai')}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40))
+
+// ── MUSIC ──
+let audioCtx=null,musicPlaying=false
+function toggleMusic(){
+  if(!audioCtx){
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)()
+    const master=audioCtx.createGain();master.gain.value=.08;master.connect(audioCtx.destination)
+    ;[55,82,110,165,220].forEach(f=>{
+      const o=audioCtx.createOscillator(),g=audioCtx.createGain(),flt=audioCtx.createBiquadFilter()
+      o.type='sine';o.frequency.value=f;flt.type='lowpass';flt.frequency.value=350;g.gain.value=.12
+      o.connect(flt);flt.connect(g);g.connect(master);o.start()
+    })
+  }
+  if(!musicPlaying){
+    if(audioCtx.state==='suspended')audioCtx.resume()
+    musicPlaying=true
+    document.getElementById('musicLabel').textContent='Playing'
+    document.getElementById('musicWaves').classList.remove('paused')
+  }else{
+    audioCtx.suspend();musicPlaying=false
+    document.getElementById('musicLabel').textContent='Ambient'
+    document.getElementById('musicWaves').classList.add('paused')
+  }
+}
+
+// ── PHOTO / LANDSCAPE / REEL UPLOAD ──
+function loadPhoto(e){
+  const f=e.target.files[0];if(!f)return
+  const r=new FileReader();r.onload=ev=>{
+    document.getElementById('photoImg').src=ev.target.result
+    document.getElementById('photoImg').style.display='block'
+    document.getElementById('photoPlaceholder').style.display='none'
+  };r.readAsDataURL(f)
+}
+function loadLandscape(e){
+  const f=e.target.files[0];if(!f)return
+  const r=new FileReader();r.onload=ev=>{
+    document.getElementById('landscapeImg').src=ev.target.result
+    document.getElementById('landscapeImg').style.display='block'
+    document.getElementById('landscapePlaceholder').style.display='none'
+  };r.readAsDataURL(f)
+}
+function loadReel(e,n){
+  const f=e.target.files[0];if(!f)return
+  const ph=document.getElementById('reel-ph-'+n)
+  const existing=document.getElementById('reel-media-'+n)
+  if(existing)existing.remove()
+
+  if(f.type.startsWith('video/')){
+    const url=URL.createObjectURL(f)
+    const vid=document.createElement('video')
+    vid.id='reel-media-'+n
+    vid.src=url;vid.loop=true;vid.muted=true;vid.playsInline=true
+    vid.style.cssText='width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0'
+    vid.addEventListener('mouseenter',()=>vid.play())
+    vid.addEventListener('mouseleave',()=>vid.pause())
+    const frame=document.getElementById('reel-frame-'+n)
+    frame.insertBefore(vid,ph)
+    ph.style.display='none'
+    // add play icon overlay
+    const overlay=document.createElement('div')
+    overlay.id='reel-overlay-'+n
+    overlay.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2'
+    overlay.innerHTML='<div style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.55);border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,.8)">▶</div>'
+    frame.appendChild(overlay)
+    frame.addEventListener('mouseenter',()=>{overlay.style.opacity='0';vid.play()},{once:false})
+    frame.addEventListener('mouseleave',()=>{overlay.style.opacity='1';vid.pause()},{once:false})
+  } else {
+    const r=new FileReader();r.onload=ev=>{
+      let img=document.getElementById('reel-media-'+n)
+      if(!img){
+        img=document.createElement('img')
+        img.id='reel-media-'+n
+        img.alt=''
+        img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0'
+        document.getElementById('reel-frame-'+n).insertBefore(img,ph)
+      }
+      img.src=ev.target.result
+      ph.style.display='none'
+    };r.readAsDataURL(f)
+  }
+}
+
+// Build reel frames
+;(function(){
+  const grid=document.getElementById('reelsGrid')
+  for(let i=1;i<=6;i++){
+    const frame=document.createElement('div')
+    frame.className='reel-frame'
+    frame.id='reel-frame-'+i
+    frame.style.position='relative'
+    frame.innerHTML=`
+      <div class="reel-placeholder" id="reel-ph-${i}">
+        <input type="file" id="reel-input-${i}" accept="image/*,video/*" onchange="loadReel(event,${i})" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:10">
+        <div class="reel-ph-icon">▶</div>
+        <div class="reel-ph-num">Reel 0${i}</div>
+        <div style="font-family:var(--mono);font-size:8.5px;color:rgba(255,255,255,.2);margin-top:4px;letter-spacing:.06em">image or video</div>
+      </div>`
+    grid.appendChild(frame)
+  }
+})()
+
+
+// ── AI AGENT (CLI style — exact from reference) ──
+let cliInitialized = false
+
+function openAgent(){
+  document.getElementById('agentOverlay').classList.add('open')
+  if(!cliInitialized){
+    cliPrint('system','Initializing ammar.ai intelligence matrix...')
+    setTimeout(()=>cliPrint('system','Connection established. I know Ammar deeply — his projects, stack, and availability. Ready for inquiry parameters.'),650)
+    cliInitialized=true
+  }
+  setTimeout(()=>document.getElementById('cliInput').focus(),300)
+}
+function closeAgent(){document.getElementById('agentOverlay').classList.remove('open')}
+function closeAgentOutside(e){if(e.target===document.getElementById('agentOverlay'))closeAgent()}
+
+function cliPrint(type,text){
+  const b=document.getElementById('cliBody')
+  const d=document.createElement('div');d.className='cli-line '+type
+  d.textContent=text;b.appendChild(d);b.scrollTop=b.scrollHeight
+  return d
+}
+
+function cliAsk(q){
+  document.getElementById('chips').style.display='none'
+  cliPrint('prompt',q)
+  fetchCli(q)
+}
+function askChip(el){cliAsk(el.textContent)}
+
+function sendCli(){
+  const inp=document.getElementById('cliInput');const q=inp.value.trim()
+  if(!q)return;inp.value=''
+  document.getElementById('chips').style.display='none'
+  cliPrint('prompt',q)
+  fetchCli(q)
+}
+
+// stubs so nothing else breaks
+function appendCli(){return document.createElement('div')}
+function appendUserMsg(){}
+function appendAiMsg(){}
+function appendTyping(){return document.createElement('div')}
+
+const SYSTEM=`You are Ammar Jamali's personal AI agent on his portfolio website. Answer as a CLI assistant. Keep answers short, punchy, plain text only. No markdown, no bullet points, no headers — just plain sentences with line breaks. Highlight key numbers and tech names.
+
+IDENTITY: Muhammad Ammar Jamali. AI Engineer + React.js Frontend Developer. 3rd-year Data Science student. Pakistan. Born ~2006. Available for remote/on-site AI roles worldwide.
+AI/ML: SpamScan (DistilBERT fine-tuned, 97% F1, -40% latency vs TF-IDF, 100+ live predictions on HuggingFace Spaces), Face Recognition CNN Builder (Flask+OpenCV, -60% data prep time), CIFAR-10 CNN (87% acc, +22% over baseline, TensorFlow/Keras), Diabetes ANN (4-layer, MSE 2900, 35% faster convergence), Heart Disease (88% F1, 3 models), Pakistan Real Estate EDA (10k+ listings, 5 cities), Supermarket Sales EDA (34% revenue insight).
+WEB at HayViral (2025–Jan 2026): Team Uraan, Himala Hills, HayViral SaaS. Freelance: Jawad Ahmed portfolio, Habitanova hackathon. Stack: React.js, JS ES6+, HTML5/CSS3, Vercel.
+SKILLS: Python, TensorFlow, Keras, PyTorch, scikit-learn, HuggingFace Transformers, Pandas, NumPy, Matplotlib, Seaborn, Flask, Gradio, Streamlit, OpenCV, Git/GitHub, React.js.
+EDUCATION: B.S. Data Science Uni of Sindh (2024-2027), SMIT Deep Learning (current), PITP Data Science (current).
+CONTACT: ammarjamali2006@gmail.com, +92 312 3980106, github.com/Ammar2380.
+Keep answers under 80 words.`
+
+async function fetchCli(q){
+  // show a "thinking" line
+  const thinking=cliPrint('system','...')
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,system:SYSTEM,messages:[{role:'user',content:q}]})
+    })
+    const data=await r.json()
+    thinking.remove()
+    const raw=data.content?.[0]?.text||"couldn't reach server. email ammarjamali2006@gmail.com"
+    // typewriter effect per line, like reference
+    const lines=raw.split('\n').filter(l=>l.trim())
+    let lineIdx=0
+    function printNextLine(){
+      if(lineIdx>=lines.length)return
+      const d=document.createElement('div');d.className='cli-line response'
+      document.getElementById('cliBody').appendChild(d)
+      const text=lines[lineIdx++];let i=0
+      const iv=setInterval(()=>{
+        d.textContent=text.slice(0,++i)
+        document.getElementById('cliBody').scrollTop=document.getElementById('cliBody').scrollHeight
+        if(i>=text.length){clearInterval(iv);setTimeout(printNextLine,80)}
+      },12)
+    }
+    printNextLine()
+  }catch{
+    thinking.remove()
+    cliPrint('system','error — try emailing ammarjamali2006@gmail.com')
+  }
+}
+
+
+// ── PIANO ──
+const WHITE_NOTES=[
+  {note:'C4',freq:261.63,key:'A',label:'C'},
+  {note:'D4',freq:293.66,key:'S',label:'D'},
+  {note:'E4',freq:329.63,key:'D',label:'E'},
+  {note:'F4',freq:349.23,key:'F',label:'F'},
+  {note:'G4',freq:392.00,key:'G',label:'G'},
+  {note:'A4',freq:440.00,key:'H',label:'A'},
+  {note:'B4',freq:493.88,key:'J',label:'B'},
+  {note:'C5',freq:523.25,key:'K',label:'C5'},
+]
+const BLACK_NOTES=[
+  {note:'C#4',freq:277.18,key:'W',afterIdx:0},
+  {note:'D#4',freq:311.13,key:'E',afterIdx:1},
+  {note:'F#4',freq:369.99,key:'T',afterIdx:3},
+  {note:'G#4',freq:415.30,key:'Y',afterIdx:4},
+  {note:'A#4',freq:466.16,key:'U',afterIdx:5},
+]
+let pianoCtx=null
+
+function getPianoCtx(){
+  if(!pianoCtx)pianoCtx=new(window.AudioContext||window.webkitAudioContext)()
+  return pianoCtx
+}
+function playNote(freq,noteName){
+  const ctx=getPianoCtx()
+  const osc=ctx.createOscillator(),gain=ctx.createGain(),filt=ctx.createBiquadFilter()
+  osc.type='triangle';osc.frequency.value=freq
+  filt.type='lowpass';filt.frequency.value=2200
+  gain.gain.setValueAtTime(0,ctx.currentTime)
+  gain.gain.linearRampToValueAtTime(.45,ctx.currentTime+.01)
+  gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+1.4)
+  osc.connect(filt);filt.connect(gain);gain.connect(ctx.destination)
+  osc.start();osc.stop(ctx.currentTime+1.5)
+  document.getElementById('pianoDisplay').textContent='♩  '+noteName
+}
+function buildPiano(){
+  const container=document.getElementById('pianoKeys')
+  container.innerHTML=''
+  const wPct=100/WHITE_NOTES.length
+  WHITE_NOTES.forEach((n,i)=>{
+    const k=document.createElement('div')
+    k.className='piano-key-w'
+    k.style.width=wPct+'%'
+    k.dataset.note=n.note;k.dataset.freq=n.freq
+    k.innerHTML=`<span>${n.label}<br><span style="font-size:7px;opacity:.4">${n.key}</span></span>`
+    const play=()=>{k.classList.add('lit');playNote(n.freq,n.note);setTimeout(()=>k.classList.remove('lit'),200)}
+    k.addEventListener('mousedown',play)
+    k.addEventListener('touchstart',e=>{e.preventDefault();play()},{passive:false})
+    container.appendChild(k)
+  })
+  BLACK_NOTES.forEach(n=>{
+    const k=document.createElement('div')
+    k.className='piano-key-b'
+    k.style.left=`calc(${(n.afterIdx+1)*wPct}% - 14px)`
+    k.dataset.note=n.note;k.dataset.freq=n.freq
+    const play=(e)=>{if(e)e.stopPropagation();k.classList.add('lit');playNote(n.freq,n.note);setTimeout(()=>k.classList.remove('lit'),200)}
+    k.addEventListener('mousedown',play)
+    k.addEventListener('touchstart',e=>{e.preventDefault();play(e)},{passive:false})
+    container.appendChild(k)
+  })
+}
+function openPiano(){
+  document.getElementById('pianoModal').classList.add('open')
+  setTimeout(buildPiano,50)
+}
+function closePiano(){document.getElementById('pianoModal').classList.remove('open')}
+function closePianoOutside(e){if(e.target===document.getElementById('pianoModal'))closePiano()}
+
+const keyMap={}
+;[...WHITE_NOTES,...BLACK_NOTES].forEach(n=>keyMap[n.key]=n)
+window.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return
+  if(e.key==='Escape'){closeAgent();closePiano();return}
+  if(!document.getElementById('pianoModal').classList.contains('open'))return
+  const k=e.key.toUpperCase()
+  if(keyMap[k]&&!e.repeat){
+    const n=keyMap[k];playNote(n.freq,n.note)
+    document.querySelectorAll('.piano-key-w,.piano-key-b').forEach(el=>{
+      if(el.dataset.note===n.note){el.classList.add('lit');setTimeout(()=>el.classList.remove('lit'),200)}
+    })
+  }
+})
+</script>
+</body>
+</html>
